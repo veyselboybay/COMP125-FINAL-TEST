@@ -4,15 +4,17 @@ let Game = (function () {
     let canvas = document.getElementsByTagName('canvas')[0];
     let stage;
     let assets;
-    let exampleLabel;
-    let exampleButton;
+    let welcomeLabel;
+    let startButton;
+    let leftDie;
+    let rightDie;
     let assetManifest = [
-        { id: "1", src: "./Assets/images/1.png" },
-        { id: "2", src: "./Assets/images/2.png" },
-        { id: "3", src: "./Assets/images/3.png" },
-        { id: "4", src: "./Assets/images/4.png" },
-        { id: "5", src: "./Assets/images/5.png" },
-        { id: "6", src: "./Assets/images/6.png" },
+        { id: "1", src: "./Assets/images/die1.jpg" },
+        { id: "2", src: "./Assets/images/die2.jpg" },
+        { id: "3", src: "./Assets/images/die3.jpg" },
+        { id: "4", src: "./Assets/images/die4.jpg" },
+        { id: "5", src: "./Assets/images/die5.jpg" },
+        { id: "6", src: "./Assets/images/die6.jpg" },
         { id: "backButton", src: "./Assets/images/startButton.png" },
         { id: "background", src: "./Assets/images/background.png" },
         { id: "blank", src: "./Assets/images/blank.png" },
@@ -57,11 +59,15 @@ let Game = (function () {
      */
     function Main() {
         console.log(`%c Main Function`, "color: grey; font-size: 14px; font-weight: bold;");
-        exampleLabel = new UIObjects.Label("An Example Label", "40px", "Consolas", "#000000", Config.Game.CENTER_X, Config.Game.CENTER_Y, true);
-        stage.addChild(exampleLabel);
-        exampleButton = new UIObjects.Button("button", Config.Game.CENTER_X, Config.Game.CENTER_Y + 100, true);
-        stage.addChild(exampleButton);
-        exampleButton.on("click", () => {
+        welcomeLabel = new UIObjects.Label("Welcome to the Rolling Game!!!", "35px", "Consolas", "#000000", Config.Game.CENTER_X, Config.Game.CENTER_Y - 200, true);
+        stage.addChild(welcomeLabel);
+        startButton = new UIObjects.Button("button", Config.Game.CENTER_X, Config.Game.CENTER_Y + 100, true);
+        stage.addChild(startButton);
+        leftDie = new Core.GameObject("1", Config.Game.CENTER_X - 100, Config.Game.CENTER_Y - 50, true);
+        stage.addChild(leftDie);
+        rightDie = new Core.GameObject("4", Config.Game.CENTER_X + 100, Config.Game.CENTER_Y - 50, true);
+        stage.addChild(rightDie);
+        startButton.on("click", () => {
             console.log("example button clicked");
         });
     }

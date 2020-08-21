@@ -6,8 +6,10 @@ let Game = (function(){
     
     let assets: createjs.LoadQueue;
 
-    let exampleLabel: UIObjects.Label;
-    let exampleButton: UIObjects.Button;    
+    let welcomeLabel: UIObjects.Label;
+    let startButton:UIObjects.Button;   
+    let leftDie:Core.GameObject;
+    let rightDie:Core.GameObject;
 
     let assetManifest = 
     [
@@ -72,13 +74,20 @@ let Game = (function(){
     {
         console.log(`%c Main Function`, "color: grey; font-size: 14px; font-weight: bold;");
 
-        exampleLabel = new UIObjects.Label("An Example Label", "40px", "Consolas", "#000000", Config.Game.CENTER_X, Config.Game.CENTER_Y, true);
-        stage.addChild(exampleLabel);
+        welcomeLabel = new UIObjects.Label("Welcome to the Rolling Game!!!", "35px", "Consolas", "#000000", Config.Game.CENTER_X, Config.Game.CENTER_Y-200, true);
+        stage.addChild(welcomeLabel);
 
-        exampleButton = new UIObjects.Button("button", Config.Game.CENTER_X, Config.Game.CENTER_Y + 100, true);
-        stage.addChild(exampleButton);
+        startButton = new UIObjects.Button("button", Config.Game.CENTER_X, Config.Game.CENTER_Y + 100, true);
+        stage.addChild(startButton);
 
-        exampleButton.on("click", ()=>{
+        leftDie=new Core.GameObject("1",Config.Game.CENTER_X-100,Config.Game.CENTER_Y-50,true);
+        stage.addChild(leftDie);
+
+        rightDie=new Core.GameObject("4",Config.Game.CENTER_X+100,Config.Game.CENTER_Y-50,true);
+        stage.addChild(rightDie);
+
+
+        startButton.on("click", ()=>{
             console.log("example button clicked");
         });
     }
