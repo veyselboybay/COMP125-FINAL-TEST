@@ -1,4 +1,11 @@
 "use strict";
+/*
+    AUTHOR:VEYSEL BOYBAY
+    FILE NAME: GAMES.TS
+    STUDENT ID: 301115376
+    DATE: AUGUST 21,2020
+    
+*/
 let Game = (function () {
     // variable declarations
     let canvas = document.getElementsByTagName('canvas')[0];
@@ -56,7 +63,9 @@ let Game = (function () {
         stage.update();
     }
     /**
-     * This is the main function of the Game (where all the fun happens)
+     * DIE PICS ARE ADDED.
+     * RANDOM NUMBERS ARE CREATED AND MATCHED WITH THE PICS
+     * DISPLAYS DICE REGARDING TO RANDOM NUMBERS
      *
      */
     function Main() {
@@ -79,7 +88,7 @@ let Game = (function () {
             if (rollRight > 6) {
                 rollRight = 6;
             }
-            rightDie.image = assets.getResult(Math.round(rollRight));
+            rightDie.image = assets.getResult(rollRight);
             rightLabel.text = rollRight.toString();
             let rollLeft = Util.Mathf.RandomRange(1, 6);
             rollLeft = Math.round(rollLeft);

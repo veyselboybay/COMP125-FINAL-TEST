@@ -1,3 +1,10 @@
+/*
+    AUTHOR:VEYSEL BOYBAY
+    FILE NAME: GAMES.TS
+    STUDENT ID: 301115376
+    DATE: AUGUST 21,2020
+    
+*/
 let Game = (function(){
 
     // variable declarations
@@ -69,7 +76,9 @@ let Game = (function(){
     }
 
     /**
-     * This is the main function of the Game (where all the fun happens)
+     * DIE PICS ARE ADDED.
+     * RANDOM NUMBERS ARE CREATED AND MATCHED WITH THE PICS
+     * DISPLAYS DICE REGARDING TO RANDOM NUMBERS
      *
      */
     function Main():void
@@ -105,7 +114,7 @@ let Game = (function(){
             {
                 rollRight=6;
             }
-            rightDie.image=assets.getResult(Math.round(rollRight)) as HTMLImageElement;
+            rightDie.image=assets.getResult(rollRight) as HTMLImageElement;
             rightLabel.text=rollRight.toString();
 
             let rollLeft=Util.Mathf.RandomRange(1,6);
