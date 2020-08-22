@@ -8,6 +8,8 @@ let Game = (function () {
     let startButton;
     let leftDie;
     let rightDie;
+    let rightLabel;
+    let leftLabel;
     let assetManifest = [
         { id: "1", src: "./Assets/images/die1.jpg" },
         { id: "2", src: "./Assets/images/die2.jpg" },
@@ -61,6 +63,10 @@ let Game = (function () {
         console.log(`%c Main Function`, "color: grey; font-size: 14px; font-weight: bold;");
         welcomeLabel = new UIObjects.Label("Welcome to the Rolling Game!!!", "35px", "Consolas", "#000000", Config.Game.CENTER_X, Config.Game.CENTER_Y - 200, true);
         stage.addChild(welcomeLabel);
+        rightLabel = new UIObjects.Label("4", "25px", "monospace", "blue", Config.Game.CENTER_X + 100, Config.Game.CENTER_Y + 30, true);
+        stage.addChild(rightLabel);
+        leftLabel = new UIObjects.Label("1", "25px", "monospace", "blue", Config.Game.CENTER_X - 100, Config.Game.CENTER_Y + 30, true);
+        stage.addChild(leftLabel);
         startButton = new UIObjects.Button("button", Config.Game.CENTER_X, Config.Game.CENTER_Y + 100, true);
         stage.addChild(startButton);
         leftDie = new Core.GameObject("1", Config.Game.CENTER_X - 100, Config.Game.CENTER_Y - 50, true);
@@ -68,7 +74,22 @@ let Game = (function () {
         rightDie = new Core.GameObject("4", Config.Game.CENTER_X + 100, Config.Game.CENTER_Y - 50, true);
         stage.addChild(rightDie);
         startButton.on("click", () => {
-            console.log("example button clicked");
+            let rollRight = Util.Mathf.RandomRange(1, 6);
+            rollRight = Math.round(rollRight);
+            if (rollRight > 6) {
+                rollRight = 6;
+            }
+            rightDie.image = assets.getResult(Math.round(rollRight));
+            rightLabel.text = rollRight.toString();
+            let rollLeft = Util.Mathf.RandomRange(1, 6);
+            rollLeft = Math.round(rollLeft);
+            if (rollLeft > 6) {
+                rollLeft = 6;
+            }
+            leftDie.image = assets.getResult(rollLeft);
+            leftLabel.text = rollLeft.toString();
+            console.log(`left:` + Math.round(rollLeft));
+            console.log(`Right:` + Math.round(rollRight));
         });
     }
     window.addEventListener('load', Preload);
